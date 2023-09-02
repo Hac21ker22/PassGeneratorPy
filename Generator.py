@@ -1,12 +1,11 @@
-import random
+import secrets
+import string
 
-lower_case = "abcdefghijklmnopqrstuvwxyz" 
-upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-num = "0123456789"
-symbol = "[]{}#()*;._-"
+def generate_password(length=10):
+    characters = string.ascii_letters + string.digits + "[]{}#()*;._-"
+    password = ''.join(secrets.choice(characters) for _ in range(length))
+    return password
 
-ans = lower_case + upper_case + num + symbol
-
-lenght = 10
-password = "".join(random.sample(ans, lenght))
-print("Passwort wird generiert... Das passwort lautet: ",password)
+length = 10
+password = generate_password(length)
+print("Passwort wird generiert... Das Passwort lautet:", password)
